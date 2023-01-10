@@ -1,5 +1,6 @@
 package com.kilchichakov.emails.parser.args
 
+import com.kilchichakov.emails.parser.store.FileFormat
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.io.File
