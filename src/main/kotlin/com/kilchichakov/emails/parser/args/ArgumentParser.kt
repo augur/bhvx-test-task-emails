@@ -20,7 +20,7 @@ object ArgumentParser {
 
         return Arguments(
             inputFile = File(inputFile),
-            format = FileFormat.valueOf(inputFormat),
+            format = FileFormat.valueOf(inputFormat.uppercase()),
             output = File(output)
         )
     }

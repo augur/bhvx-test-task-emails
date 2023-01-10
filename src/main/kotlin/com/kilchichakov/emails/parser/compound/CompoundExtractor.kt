@@ -17,26 +17,27 @@ object CompoundExtractor {
     fun extract(file: File, format: FileFormat): List<File> {
         val intermediateResults: Queue<TempResult> = LinkedList()
         val result = mutableListOf<File>()
-
-        var nextResult: TempResult? = TempResult(file = file, format = format)
-        while (nextResult != null) {
+        intermediateResults.add(TempResult(file = file, format = format))
+        while (intermediateResults.isNotEmpty()) {
+            val nextResult = intermediateResults.poll()
             FileInputStream(nextResult.file).use { fis ->
                 when (nextResult!!.format) {
                     FileFormat.ZIP -> {
                         val contents = ZipExtractor.extract(fis)
+                        println("${nextResult.file.name} contents: ${contents.joinToString { it.file.name }}")
                         intermediateResults.addAll(contents)
                     }
                     FileFormat.EML -> {
                         val attachments = EmailExtractor.extract(fis)
+                        println("${nextResult.file.name} attachments: ${attachments.joinToString { it.file.name }}")
                         if (attachments.isEmpty()) {
-                            result.add(nextResult!!.file)
+                            result.add(nextResult.file)
                         } else {
                             intermediateResults.addAll(attachments)
                         }
                     }
                 }
             }
-            nextResult = intermediateResults.poll()
         }
 
         return result
