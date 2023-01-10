@@ -4,7 +4,6 @@ import com.kilchichakov.emails.parser.store.FileFormat
 import com.kilchichakov.emails.parser.store.TempResult
 import com.kilchichakov.emails.parser.store.TempStorage
 import java.io.File
-import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.InputStream
 import java.util.zip.ZipInputStream
@@ -36,7 +35,6 @@ object ZipExtractor {
                 TempResult(
                     file = entryFile,
                     format = FileFormat.getFileFormat(entryFile),
-                    isFinal = false
                 )
             )
             entry = zis.nextEntry
