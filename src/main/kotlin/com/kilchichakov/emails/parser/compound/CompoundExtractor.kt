@@ -15,13 +15,14 @@ object CompoundExtractor {
      * Returns list of resulting files (stored in system temp dir)
      */
     fun extract(file: File, format: FileFormat): List<File> {
-        val intermediateResults: Queue<TempResult> = LinkedList()
         val result = mutableListOf<File>()
+        val intermediateResults: Queue<TempResult> = LinkedList()
         intermediateResults.add(TempResult(file = file, format = format))
+
         while (intermediateResults.isNotEmpty()) {
             val nextResult = intermediateResults.poll()
             FileInputStream(nextResult.file).use { fis ->
-                when (nextResult!!.format) {
+                when (nextResult.format) {
                     FileFormat.ZIP -> {
                         val contents = ZipExtractor.extract(fis)
                         println("${nextResult.file.name} contents: ${contents.joinToString { it.file.name }}")
