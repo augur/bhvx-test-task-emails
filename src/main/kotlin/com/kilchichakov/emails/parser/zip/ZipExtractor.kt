@@ -14,8 +14,8 @@ object ZipExtractor {
     /**
      * Returns contents of the archive, or empty list, if archive doesn't contain any permitted file formats
      */
-    fun extract(fis: InputStream): List<TempResult> {
-        val zis = ZipInputStream(fis)
+    fun extract(inputStream: InputStream): List<TempResult> {
+        val zis = ZipInputStream(inputStream)
         val result = mutableListOf<TempResult>()
         var entry = zis.nextEntry
         val dir = TempStorage.provideTempDir()
