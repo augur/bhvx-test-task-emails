@@ -1,26 +1,25 @@
 package com.kilchichakov.emails.parser.args
 
-import com.kilchichakov.emails.parser.format.FileFormat
 import java.io.File
 
 object ArgumentParser {
 
     fun parse(args: Array<String>): Arguments {
         lateinit var inputFile: String
-        lateinit var inputFormat: String
+        lateinit var formatFile: String
         var output = "output/"
 
         for (arg in args) {
             when {
                 arg.startsWith("--input=") -> inputFile = arg.substringAfter("=")
                 arg.startsWith("--output=") -> output = arg.substringAfter("=")
-                arg.startsWith("--format=") -> inputFormat = arg.substringAfter("=")
+                arg.startsWith("--format=") -> formatFile = arg.substringAfter("=")
             }
         }
 
         return Arguments(
             inputFile = File(inputFile),
-            format = FileFormat.valueOf(inputFormat.uppercase()),
+            formatFile = File(formatFile),
             output = File(output)
         )
     }

@@ -1,10 +1,9 @@
 package com.kilchichakov.emails.parser.args
 
-import com.kilchichakov.emails.parser.format.FileFormat
 import java.io.File
 
 data class Arguments(
     val inputFile: File,
-    val format: FileFormat,
+    val formatFile: File,
     val output: File
 )
