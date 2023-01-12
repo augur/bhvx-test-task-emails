@@ -1,4 +1,4 @@
-package com.kilchichakov.emails.parser.store
+package com.kilchichakov.emails.parser.format
 
 import java.io.File
 

@@ -1,6 +1,6 @@
 package com.kilchichakov.emails.parser.email
 
-import com.kilchichakov.emails.parser.store.FileFormat
+import com.kilchichakov.emails.parser.format.FileFormat
 import com.kilchichakov.emails.parser.store.TempResult
 import com.kilchichakov.emails.parser.store.TempStorage
 import java.io.File

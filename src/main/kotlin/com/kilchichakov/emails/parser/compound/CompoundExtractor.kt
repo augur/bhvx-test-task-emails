@@ -1,7 +1,7 @@
 package com.kilchichakov.emails.parser.compound
 
 import com.kilchichakov.emails.parser.email.EmailExtractor
-import com.kilchichakov.emails.parser.store.FileFormat
+import com.kilchichakov.emails.parser.format.FileFormat
 import com.kilchichakov.emails.parser.store.TempResult
 import com.kilchichakov.emails.parser.zip.ZipExtractor
 import java.io.File
